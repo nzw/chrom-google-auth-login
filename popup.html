@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Google Auth Extension</title>
+</head>
+<body>
+  <button id="authorize">Google認証</button>
+
+  <script src="js/popup.js"></script>
+</body>
+</html>
+
+<!-- BE側
+from fastapi import FastAPI, HTTPException
+from pydantic import BaseModel
+import requests
+
+app = FastAPI()
+
+class TokenRequest(BaseModel):
+    token: str
+
+@app.post("/validate")
+async def validate_token(request: TokenRequest):
+    google_token = request.token
+    result = requests.get(f"https://oauth2.googleapis.com/tokeninfo?id_token={google_token}")
+
+    if result.status_code != 200:
+        raise HTTPException(status_code=401, detail="Invalid token")
+
+    data = result.json()
+    if data.get("email") != "your-allowed-email@example.com":
+        raise HTTPException(status_code=403, detail="Unauthorized user")
+
+    return {"status": "success", "email": data["email"]}
+-->

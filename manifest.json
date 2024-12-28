@@ -1,0 +1,22 @@
+{
+    "manifest_version": 3,
+    "name": "Google Auth Chrome Extension",
+    "version": "1.0",
+    "description": "Googleアカウント認証を行う拡張機能",
+    "permissions": ["identity"],
+    "background": {
+      "service_worker": "js/background.js"
+    },
+    "oauth2": {
+      "client_id": "",
+      "scopes": ["openid", "email"]
+    },
+    "action": {
+      "default_popup": "popup.html",
+      "default_icon": {
+        "16": "img/16x16.png",
+        "48": "img/48x48.png",
+        "128": "img/128x128.png"
+      }
+    }
+  }
